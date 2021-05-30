@@ -1,7 +1,7 @@
 import { Fragment } from 'react';
 import type { AppProps } from 'next/app';
-import '../styles/globals.css';
 import Menu, { MenuItem } from 'Base/Layout/Menu';
+import '../styles/globals.css';
 
 const menuItems: MenuItem[] = [
   {
