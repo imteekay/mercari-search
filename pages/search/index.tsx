@@ -7,16 +7,16 @@ import { Categories } from './Categories';
 
 export const Search: FunctionComponent = () => {
   const { category, updateCategory, categories } = useCategory();
-  const { data, isLoading } = useProducts(category);
+  const { data, isLoading, isError } = useProducts(category);
 
-  if (isLoading) {
-    return <p>loading...</p>;
+  if (isError) {
+    return <p>error!!</p>;
   }
 
   return (
     <>
       <Categories categories={categories} handleClick={updateCategory} />
-      <ProductList products={data} isLoading={false} />
+      <ProductList products={data} isLoading={isLoading} />
     </>
   );
 };
