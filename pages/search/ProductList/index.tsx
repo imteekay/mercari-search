@@ -3,29 +3,19 @@ import Grid from '@material-ui/core/Grid';
 
 import { ProductType } from 'Product/types/ProductType';
 import Product from '../Product';
-import ProductSkeleton from '../Product/Skeleton';
+import { Skeleton } from './Skeleton';
 
 type ProductListPropsType = {
-  products: ProductType[];
+  products: ProductType[] | undefined;
   isLoading: boolean;
 };
-
-const productsSkeleton = [0, 0, 0, 0, 0, 0, 0, 0];
 
 export const ProductList: FunctionComponent<ProductListPropsType> = ({
   products,
   isLoading,
 }) => {
-  if (isLoading) {
-    return (
-      <Grid container spacing={3}>
-        {productsSkeleton.map((_, id) => (
-          <Grid item xs={6} md={3} key={`product-skeleton-grid-${id}`}>
-            <ProductSkeleton />
-          </Grid>
-        ))}
-      </Grid>
-    );
+  if (isLoading || !products) {
+    return <Skeleton />;
   }
 
   return (
