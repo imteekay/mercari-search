@@ -38,7 +38,7 @@ export const Menu: FunctionComponent<MenuPropsType> = ({ menuItems }) => {
       >
         {menuItems.map((item: MenuItem) => (
           <Link href={item.linkTo} key={item.key}>
-            <MuiMenuItem>{item.label}</MuiMenuItem>
+            <MuiMenuItem onClick={handleClose}>{item.label}</MuiMenuItem>
           </Link>
         ))}
       </MuiMenu>
