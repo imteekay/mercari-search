@@ -15,7 +15,7 @@ describe('PriceWithDiscount', () => {
   describe('when the product has no discount', () => {
     it('shows nothing', () => {
       const { queryByTestId } = render(
-        <PriceWithDiscount hasDiscount={false} price="" />
+        <PriceWithDiscount hasDiscount={false} price="" />,
       );
 
       expect(queryByTestId('discount-off-label')).not.toBeInTheDocument();
@@ -24,7 +24,7 @@ describe('PriceWithDiscount', () => {
 
   it('has no accessibility violations', async () => {
     const { container } = render(
-      <PriceWithDiscount hasDiscount price="$200" />
+      <PriceWithDiscount hasDiscount price="$200" />,
     );
 
     const results = await axe(container);

@@ -1,9 +1,4 @@
-import {
-  Fragment,
-  useState,
-  MouseEvent,
-  FunctionComponent,
-} from 'react';
+import { Fragment, useState, MouseEvent, FunctionComponent } from 'react';
 import Link from 'next/link';
 
 import Button from '@material-ui/core/Button';

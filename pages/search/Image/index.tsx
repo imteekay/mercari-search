@@ -31,21 +31,17 @@ export const Image: FunctionComponent<ImagePropsType> = ({
   isLoading,
 }) => {
   const [wrapperRef, setWrapperRef] = useState<HTMLDivElement>();
-  const wrapperCallback = useCallback(node => {
+  const wrapperCallback = useCallback((node) => {
     setWrapperRef(node);
   }, []);
 
-  const { isIntersecting }: IntersectionStatus = useIntersectionObserver(
-    wrapperRef
-  );
+  const { isIntersecting }: IntersectionStatus =
+    useIntersectionObserver(wrapperRef);
 
   const showImageSkeleton: boolean = isLoading || !isIntersecting;
 
-  const {
-    handleImageOnLoad,
-    imageVisibility,
-    imageOpactity,
-  }: ImageOnLoadType = useImageOnLoad();
+  const { handleImageOnLoad, imageVisibility, imageOpactity }: ImageOnLoadType =
+    useImageOnLoad();
 
   return (
     <div ref={wrapperCallback} style={imageWrapperStyle}>

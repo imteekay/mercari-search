@@ -16,7 +16,7 @@ describe('Price', () => {
   describe('when the product has no discount', () => {
     it('shows the skeleton loader', () => {
       const { queryByTestId } = render(
-        <Price price={100} discount={20} isLoading />
+        <Price price={100} discount={20} isLoading />,
       );
 
       expect(queryByTestId('price-skeleton-loader')).toBeInTheDocument();
@@ -25,7 +25,7 @@ describe('Price', () => {
 
   it('has no accessibility violations', async () => {
     const { container } = render(
-      <Price price={100} discount={20} isLoading={false} />
+      <Price price={100} discount={20} isLoading={false} />,
     );
 
     const results = await axe(container);

@@ -11,7 +11,7 @@ export const Categories: FunctionComponent<CategoriesProps> = ({
   handleClick,
 }) => (
   <div>
-    {categories.map(category => (
+    {categories.map((category) => (
       <Button onClick={handleClick(category)}>{category}</Button>
     ))}
   </div>

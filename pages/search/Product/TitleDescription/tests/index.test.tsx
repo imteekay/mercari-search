@@ -16,7 +16,7 @@ describe('TitleDescription', () => {
           name={product.name}
           description={product.description}
           isLoading
-        />
+        />,
       );
 
       expect(queryByTestId('name-skeleton-loader')).toBeInTheDocument();
@@ -33,7 +33,7 @@ describe('TitleDescription', () => {
           name={product.name}
           description={product.description}
           isLoading={false}
-        />
+        />,
       );
 
       expect(screen.getByText(product.name)).toBeInTheDocument();
@@ -47,7 +47,7 @@ describe('TitleDescription', () => {
         name={product.name}
         description={product.description}
         isLoading={false}
-      />
+      />,
     );
 
     const results = await axe(container);

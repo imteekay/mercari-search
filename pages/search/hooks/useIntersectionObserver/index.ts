@@ -12,7 +12,7 @@ const defaultOptions: IntersectionObserverInit = {
 
 export const useIntersectionObserver = (
   target: TargetType,
-  options: IntersectionObserverInit = defaultOptions
+  options: IntersectionObserverInit = defaultOptions,
 ): IntersectionStatus => {
   const [isIntersecting, setIsIntersecting] = useState(false);
 
@@ -31,7 +31,7 @@ export const useIntersectionObserver = (
 
     const observer: IntersectionObserver = new IntersectionObserver(
       onIntersect,
-      options
+      options,
     );
 
     observer.observe(target);

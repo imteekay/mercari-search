@@ -30,7 +30,7 @@ export const ProductList: FunctionComponent<ProductListPropsType> = ({
 
   return (
     <Grid container spacing={3}>
-      {products.map(product => (
+      {products.map((product) => (
         <Grid
           item
           xs={6}

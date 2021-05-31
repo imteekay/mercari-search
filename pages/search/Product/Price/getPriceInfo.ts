@@ -10,7 +10,7 @@ export const applyDiscount = (price: number, discount: number): number =>
 
 export const getPriceInfo = (
   price: number,
-  discount: number
+  discount: number,
 ): PriceInfoType => {
   const hasDiscount: boolean = Boolean(discount);
   const priceWithDiscount: string = hasDiscount
