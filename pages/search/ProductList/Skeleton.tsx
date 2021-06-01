@@ -1,5 +1,5 @@
 import Grid from '@material-ui/core/Grid';
-import ProductSkeleton from '../Product/Skeleton';
+import ProductSkeleton from '../Product/ProductSkeleton';
 
 const productsSkeleton = new Array(8).fill(0);
 

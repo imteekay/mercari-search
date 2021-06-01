@@ -1,4 +1,4 @@
-import React, {
+import {
   memo,
   useCallback,
   useState,
@@ -6,29 +6,24 @@ import React, {
   FunctionComponent,
 } from 'react';
 
-import Skeleton from '@material-ui/lab/Skeleton';
-
 import { ProductType } from 'Product/types/ProductType';
 import {
   useIntersectionObserver,
   IntersectionStatus,
 } from '../hooks/useIntersectionObserver';
 
-import { imageWrapperStyle, imageStyle, skeletonStyle } from './styles';
+import { imageWrapperStyle, imageStyle } from './styles';
 import { useImageOnLoad, ImageOnLoadType } from './hooks/useImageOnLoad';
 
 type ImageUrlType = Pick<ProductType, 'imageUrl' | 'thumbUrl'>;
-type ImageAttrType = { imageAlt: string; width?: string };
-type ImageStateType = { isLoading: boolean };
+type ImageAttrType = { imageAlt: string };
 
-export type ImagePropsType = ImageUrlType & ImageAttrType & ImageStateType;
+export type ImagePropsType = ImageUrlType & ImageAttrType;
 
 export const Image: FunctionComponent<ImagePropsType> = ({
   imageUrl,
   thumbUrl,
   imageAlt,
-  width,
-  isLoading,
 }) => {
   const [wrapperRef, setWrapperRef] = useState<HTMLDivElement>();
   const wrapperCallback = useCallback((node) => {
@@ -38,44 +33,30 @@ export const Image: FunctionComponent<ImagePropsType> = ({
   const { isIntersecting }: IntersectionStatus =
     useIntersectionObserver(wrapperRef);
 
-  const showImageSkeleton: boolean = isLoading || !isIntersecting;
-
   const { handleImageOnLoad, imageVisibility, imageOpactity }: ImageOnLoadType =
     useImageOnLoad();
 
   return (
     <div ref={wrapperCallback} style={imageWrapperStyle}>
-      {showImageSkeleton ? (
-        <Skeleton
-          variant="rect"
-          width={width}
-          height={imageWrapperStyle.height}
-          style={skeletonStyle}
-          data-testid="image-skeleton-loader"
-        />
-      ) : (
+      {isIntersecting ? (
         <Fragment>
           <img
             src={thumbUrl}
             alt={imageAlt}
-            width={width}
+            width="100%"
             style={{ ...imageStyle, ...imageVisibility }}
           />
           <img
             onLoad={handleImageOnLoad}
             src={imageUrl}
             alt={imageAlt}
-            width={width}
+            width="100%"
             style={{ ...imageStyle, ...imageOpactity }}
           />
         </Fragment>
-      )}
+      ) : null}
     </div>
   );
-};
-
-Image.defaultProps = {
-  width: '100%',
 };
 
 export default memo(Image);
