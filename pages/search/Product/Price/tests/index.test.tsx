@@ -13,13 +13,6 @@ describe('Price', () => {
     });
   });
 
-  describe('when the product has no discount', () => {
-    it('shows the skeleton loader', () => {
-      expect(screen.getByText('$100')).toBeInTheDocument();
-      expect(screen.getByText('$80')).toBeInTheDocument();
-    });
-  });
-
   it('has no accessibility violations', async () => {
     const { container } = render(<Price price={100} discount={20} />);
     const results = await axe(container);

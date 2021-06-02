@@ -9,30 +9,12 @@ const product: { name: string; description: string } = {
 };
 
 describe('TitleDescription', () => {
-  describe('when is loading', () => {
-    it('does not render anything', () => {
-      const { queryByTestId } = render(
-        <TitleDescription
-          name={product.name}
-          description={product.description}
-          isLoading
-        />,
-      );
-
-      expect(queryByTestId('name-skeleton-loader')).toBeInTheDocument();
-      expect(queryByTestId('description-skeleton-loader')).toBeInTheDocument();
-      expect(queryByTestId('product-name')).not.toBeInTheDocument();
-      expect(queryByTestId('product-description')).not.toBeInTheDocument();
-    });
-  });
-
   describe('when finished loading', () => {
     it('renders the product name and description', () => {
       render(
         <TitleDescription
           name={product.name}
           description={product.description}
-          isLoading={false}
         />,
       );
 
@@ -46,12 +28,10 @@ describe('TitleDescription', () => {
       <TitleDescription
         name={product.name}
         description={product.description}
-        isLoading={false}
       />,
     );
 
     const results = await axe(container);
-
     expect(results).toHaveNoViolations();
   });
 });

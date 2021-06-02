@@ -12,7 +12,6 @@ describe('Product', () => {
     price: 100,
     discount: 20,
     isShippingFree: true,
-    isLoading: false,
   };
 
   describe('when the product has a discount', () => {
@@ -27,23 +26,9 @@ describe('Product', () => {
     });
   });
 
-  describe('when the product has no discount', () => {
-    it('shows the product skeleton', () => {
-      const { queryByTestId } = render(<Product {...product} isLoading />);
-
-      expect(queryByTestId('name-skeleton-loader')).toBeInTheDocument();
-      expect(queryByTestId('description-skeleton-loader')).toBeInTheDocument();
-      expect(queryByTestId('price-skeleton-loader')).toBeInTheDocument();
-      expect(queryByTestId('tag-skeleton-loader')).toBeInTheDocument();
-      expect(queryByTestId('image-skeleton-loader')).toBeInTheDocument();
-    });
-  });
-
   it('has no accessibility violations', async () => {
     const { container } = render(<Product {...product} />);
-
     const results = await axe(container);
-
     expect(results).toHaveNoViolations();
   });
 });

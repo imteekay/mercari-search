@@ -17,7 +17,6 @@ describe('Discount', () => {
       const { queryByTestId } = render(
         <Discount hasDiscount={false} discountOff="" />,
       );
-
       expect(queryByTestId('discount-off-label')).not.toBeInTheDocument();
     });
   });
@@ -26,9 +25,7 @@ describe('Discount', () => {
     const { container } = render(
       <Discount hasDiscount discountOff="20% OFF" />,
     );
-
     const results = await axe(container);
-
     expect(results).toHaveNoViolations();
   });
 });
