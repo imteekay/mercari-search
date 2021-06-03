@@ -1,9 +1,4 @@
-import React, {
-  Fragment,
-  useState,
-  MouseEvent,
-  FunctionComponent,
-} from 'react';
+import { Fragment, useState, MouseEvent, FunctionComponent } from 'react';
 import Link from 'next/link';
 
 import Button from '@material-ui/core/Button';
@@ -43,7 +38,7 @@ export const Menu: FunctionComponent<MenuPropsType> = ({ menuItems }) => {
       >
         {menuItems.map((item: MenuItem) => (
           <Link href={item.linkTo} key={item.key}>
-            <MuiMenuItem>{item.label}</MuiMenuItem>
+            <MuiMenuItem onClick={handleClose}>{item.label}</MuiMenuItem>
           </Link>
         ))}
       </MuiMenu>
