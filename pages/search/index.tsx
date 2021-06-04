@@ -1,5 +1,7 @@
 import { FunctionComponent } from 'react';
 
+import Container from '@material-ui/core/Container';
+
 import { useCategory } from './hooks/useCategory';
 import { useProducts } from './hooks/useProducts';
 import { ProductList } from './ProductList';
@@ -14,10 +16,10 @@ export const Search: FunctionComponent = () => {
   }
 
   return (
-    <>
+    <Container maxWidth="lg">
       <Categories categories={categories} handleClick={updateCategory} />
       <ProductList products={data} isLoading={isLoading} />
-    </>
+    </Container>
   );
 };
 
