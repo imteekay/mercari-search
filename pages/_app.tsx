@@ -23,7 +23,13 @@ function App({ Component, pageProps }: AppProps) {
   const queryClientRef = useRef<QueryClient>();
 
   if (!queryClientRef.current) {
-    queryClientRef.current = new QueryClient();
+    queryClientRef.current = new QueryClient({
+      defaultOptions: {
+        queries: {
+          refetchOnWindowFocus: false,
+        },
+      },
+    });
   }
 
   return (
