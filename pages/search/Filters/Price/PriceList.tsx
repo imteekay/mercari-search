@@ -1,16 +1,30 @@
+import RadioGroup from '@material-ui/core/RadioGroup';
+import Radio from '@material-ui/core/Radio';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+
+import { prices } from 'Product/Categories/prices';
+import { useQueryStringForPrice } from '../../hooks/useQueryStringForPrice';
+
 const PriceList = () => {
+  const { updateRouteURL, isChecked } = useQueryStringForPrice();
+
   return (
-    <ul>
-      {[
-        'Under $25',
-        '$25 to $50',
-        '$50 to $100',
-        '$100 to $200',
-        '$200 and up',
-      ].map((price) => (
-        <li>{price}</li>
+    <RadioGroup aria-label="Status" name="status">
+      {prices.map(({ minPrice, maxPrice, value }) => (
+        <FormControlLabel
+          value={value}
+          control={
+            <Radio
+              checked={isChecked(value)}
+              onChange={() => {
+                updateRouteURL({ minPrice, maxPrice });
+              }}
+            />
+          }
+          label={value}
+        />
       ))}
-    </ul>
+    </RadioGroup>
   );
 };
 

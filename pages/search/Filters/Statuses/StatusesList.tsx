@@ -9,23 +9,21 @@ const StatusesList = () => {
   const { updateRouteURL, isChecked } = useQueryStringForRadio('status');
 
   return (
-    <ul>
-      <RadioGroup
-        aria-label="Status"
-        name="status"
-        onChange={(element) => {
-          updateRouteURL(element.target.value);
-        }}
-      >
-        {statuses.map((status) => (
-          <FormControlLabel
-            value={status}
-            control={<Radio checked={isChecked(status)} />}
-            label={status}
-          />
-        ))}
-      </RadioGroup>
-    </ul>
+    <RadioGroup
+      aria-label="Status"
+      name="status"
+      onChange={(element) => {
+        updateRouteURL(element.target.value);
+      }}
+    >
+      {statuses.map((status) => (
+        <FormControlLabel
+          value={status}
+          control={<Radio checked={isChecked(status)} />}
+          label={status}
+        />
+      ))}
+    </RadioGroup>
   );
 };
 
