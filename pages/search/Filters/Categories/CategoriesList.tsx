@@ -1,10 +1,27 @@
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+
+import { categories } from 'Product/Categories/categories';
+
 const CategoriesList = () => {
+  const { pathname, query } = useRouter();
+
   return (
-    <ul>
-      {['category1', 'category2'].map((category) => (
-        <li>{category}</li>
+    <>
+      {categories.map(({ id, label }) => (
+        <Link
+          href={{
+            pathname,
+            query: {
+              ...query,
+              categoryId: id,
+            },
+          }}
+        >
+          {label}
+        </Link>
       ))}
-    </ul>
+    </>
   );
 };
 
