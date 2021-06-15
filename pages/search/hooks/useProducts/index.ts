@@ -22,7 +22,7 @@ function fetchProduct(category: string) {
   return async () => getProducts(category);
 }
 
-export function useProducts(category: string) {
+export function useProducts(category: string = 'all') {
   return useQuery<ProductType[], Error>(
     ['products', category],
     fetchProduct(category),
