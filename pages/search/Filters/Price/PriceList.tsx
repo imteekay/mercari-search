@@ -12,6 +12,7 @@ const PriceList = () => {
     <RadioGroup aria-label="Status" name="status">
       {prices.map(({ minPrice, maxPrice, value }) => (
         <FormControlLabel
+          key={`${minPrice}-${maxPrice}-${value}`}
           value={value}
           control={
             <Radio

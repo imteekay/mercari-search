@@ -15,21 +15,17 @@ const ShippingList = () => {
     };
 
   return (
-    <ul>
-      <li>
-        <FormControlLabel
-          control={
-            <Checkbox
-              color="primary"
-              name="shipping"
-              onChange={onChange('Free Shipping')}
-              checked={isChecked('Free Shipping')}
-            />
-          }
-          label="Free Shipping"
+    <FormControlLabel
+      control={
+        <Checkbox
+          color="primary"
+          name="shipping"
+          onChange={onChange('Free Shipping')}
+          checked={isChecked('Free Shipping')}
         />
-      </li>
-    </ul>
+      }
+      label="Free Shipping"
+    />
   );
 };
 

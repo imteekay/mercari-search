@@ -18,6 +18,7 @@ const StatusesList = () => {
     >
       {statuses.map((status) => (
         <FormControlLabel
+          key={status}
           value={status}
           control={<Radio checked={isChecked(status)} />}
           label={status}
