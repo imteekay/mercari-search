@@ -1,4 +1,5 @@
 import { FunctionComponent } from 'react';
+import { useRouter } from 'next/router';
 
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
@@ -8,7 +9,8 @@ import { Filters } from './Filters';
 import { ProductList } from './ProductList';
 
 export const Search: FunctionComponent = () => {
-  const { data, isLoading, isError } = useProducts();
+  const { query } = useRouter();
+  const { data, isLoading, isError } = useProducts(query);
 
   if (isError) {
     return <p>error!!</p>;

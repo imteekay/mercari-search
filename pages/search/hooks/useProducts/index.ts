@@ -1,30 +1,22 @@
 import { useQuery } from 'react-query';
+import { ParsedUrlQuery } from 'querystring';
 import { ProductType } from 'Product/types/ProductType';
 import { products } from './products';
 
 const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
-async function getProducts(category: string) {
+async function getProducts(query: ParsedUrlQuery) {
   await sleep(500);
-  switch (category) {
-    case 'all':
-      return products;
-    case 'JavaScript':
-      return [products[0]];
-    case 'TypeScript':
-      return [products[1]];
-    default:
-      return products;
-  }
+  return products;
 }
 
-function fetchProduct(category: string) {
-  return async () => getProducts(category);
+function fetchProduct(query: ParsedUrlQuery) {
+  return async () => getProducts(query);
 }
 
-export function useProducts(category: string = 'all') {
+export function useProducts(query: ParsedUrlQuery) {
   return useQuery<ProductType[], Error>(
-    ['products', category],
-    fetchProduct(category),
+    ['products', query],
+    fetchProduct(query),
   );
 }
