@@ -16,14 +16,18 @@
     "next": "11.1.1",
     "react": "17.0.2",
     "react-dom": "17.0.2",
-    "react-query": "^3.16.0"
+    "react-query": "^3.16.0",
+    "styled-components": "^5.3.0"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.12.0",
     "@testing-library/react": "^11.2.7",
+    "@testing-library/react-hooks": "^7.0.0",
     "@types/jest": "^26.0.23",
     "@types/jest-axe": "^3.5.1",
+    "@types/styled-components": "^5.1.10",
     "babel-jest": "^27.0.2",
+    "babel-plugin-styled-components": "^1.12.0",
     "husky": ">=6",
     "jest": "^27.0.3",
     "jest-axe": "^4.1.0",

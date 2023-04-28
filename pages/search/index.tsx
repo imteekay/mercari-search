@@ -1,23 +1,32 @@
 import { FunctionComponent } from 'react';
+import { useRouter } from 'next/router';
 
-import { useCategory } from './hooks/useCategory';
+import Container from '@material-ui/core/Container';
+import Grid from '@material-ui/core/Grid';
+
 import { useProducts } from './hooks/useProducts';
+import { Filters } from './Filters';
 import { ProductList } from './ProductList';
-import { Categories } from './Categories';
 
 export const Search: FunctionComponent = () => {
-  const { category, updateCategory, categories } = useCategory();
-  const { data, isLoading, isError } = useProducts(category);
+  const { query } = useRouter();
+  const { data, isLoading, isError } = useProducts(query);
 
   if (isError) {
     return <p>error!!</p>;
   }
 
   return (
-    <>
-      <Categories categories={categories} handleClick={updateCategory} />
-      <ProductList products={data} isLoading={isLoading} />
-    </>
+    <Container maxWidth="lg">
+      <Grid container spacing={2}>
+        <Grid item sm={2}>
+          <Filters />
+        </Grid>
+        <Grid item sm={10}>
+          <ProductList products={data} isLoading={isLoading} />
+        </Grid>
+      </Grid>
+    </Container>
   );
 };
 

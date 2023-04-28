@@ -36,7 +36,6 @@ export const ProductList: FunctionComponent<ProductListPropsType> = ({
             price={product.price}
             discount={product.discount}
             isShippingFree={product.isShippingFree}
-            isLoading={isLoading}
           />
         </Grid>
       ))}
